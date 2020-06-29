@@ -16,10 +16,13 @@ git clone "https://$API_TOKEN_GITHUB@github.com/$GITHUB_USERNAME/$GITHUB_REPO.gi
 echo "Before sync:"
 ls -la "$CLONE_DIR"
 
-echo "Folder to be synced:"
-ls -la "$GITHUB_WORKSPACE/$FOLDER"
+# Copy files into the git and deletes all git
+find "$CLONE_DIR" | grep -v "^$CLONE_DIR/\.git" | grep -v "^$CLONE_DIR$" | xargs rm -rf # delete all files (to handle deletions)
 
-cp -r "$GITHUB_WORKSPACE/$FOLDER/*" "$CLONE_DIR"
+echo "Folder to be synced:"
+ls -la "$FOLDER"
+
+cp -r "$FOLDER/" "$CLONE_DIR"
 
 cd "$CLONE_DIR"
 
