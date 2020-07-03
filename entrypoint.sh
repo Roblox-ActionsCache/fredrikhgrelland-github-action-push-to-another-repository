@@ -22,7 +22,7 @@ find "$CLONE_DIR" | grep -v "^$CLONE_DIR/\.git" | grep -v "^$CLONE_DIR$" | xargs
 echo "Folder to be synced:"
 ls -la "$FOLDER"
 
-cp -r "$FOLDER/" "$CLONE_DIR"
+cp -r "$FOLDER" "$CLONE_DIR"
 
 cd "$CLONE_DIR"
 
